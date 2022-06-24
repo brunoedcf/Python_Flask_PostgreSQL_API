@@ -20,14 +20,14 @@ def CreateDatabase():
 
     # Insert data into the table
 
-    cur.execute('INSERT INTO users (name, pokemons)'
-                'VALUES (\'Brest\', 5);'
-                )
+#     cur.execute('INSERT INTO users (name, pokemons)'
+#                 'VALUES (\'Brest\', 5);'
+#                 )
 
 
-    cur.execute('INSERT INTO users (name, pokemons)'
-                'VALUES (\'dudaholandah\', 3);'
-                )
+#     cur.execute('INSERT INTO users (name, pokemons)'
+#                 'VALUES (\'dudaholandah\', 3);'
+#                 )
 
     conn.commit()
 

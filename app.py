@@ -1,7 +1,7 @@
 from db_init import CreateDatabase, GetDatabaseConnection
 from flask import Flask, request
 
-CreateDatabase()
+# CreateDatabase()
 
 app = Flask(__name__)
 
@@ -113,11 +113,17 @@ def UpdateUser(id):
         query = f"UPDATE users SET name = '{request_data['name']}', pokemons = {request_data['pokemons']} WHERE id = {id};"
         cur.execute(query)
         conn.commit()
+        updated_rows = cur.rowcount
         cur.close()
         conn.close()
 
-        return {
-            "success": "Success"
+        if updated_rows > 0:
+            return {
+                "success": "Success"
+            }
+        else:
+            return {
+            "error": "Query Error"
         }
 
     except:
