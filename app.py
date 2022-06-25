@@ -131,3 +131,35 @@ def UpdateUser(id):
         return {
             "error": "Error"
         }
+
+
+@app.route('/<id>', methods=['DELETE'])
+def DeleteUser(id):
+
+    try:
+
+        request_data = request.get_json()
+
+        conn = GetDatabaseConnection()
+        cur = conn.cursor()
+        query = f"DELETE FROM users WHERE id = {id};;"
+        cur.execute(query)
+        conn.commit()
+        updated_rows = cur.rowcount
+        cur.close()
+        conn.close()
+
+        if updated_rows > 0:
+            return {
+                "success": "Success"
+            }
+        else:
+            return {
+            "error": "Query Error"
+        }
+
+    except:
+
+        return {
+            "error": "Error"
+        }
