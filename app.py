@@ -142,7 +142,7 @@ def DeleteUser(id):
 
         conn = GetDatabaseConnection()
         cur = conn.cursor()
-        query = f"DELETE FROM users WHERE id = {id};;"
+        query = f"DELETE FROM users WHERE id = {id};"
         cur.execute(query)
         conn.commit()
         updated_rows = cur.rowcount
